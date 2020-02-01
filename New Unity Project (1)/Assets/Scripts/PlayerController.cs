@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camLook = new Vector3(0, 12, 0);
-        // camLook = new Vector3(0, 12, -4);
+        //camLook = new Vector3(0, 12, 0);
+        camLook = new Vector3(0, 12, -4);
         playerRigidBody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
     }
