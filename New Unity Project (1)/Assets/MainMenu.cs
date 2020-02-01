@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private AudioSource background;
+    void Start()
+    {
+        background = GameObject.Find("Canvas").GetComponent<AudioSource>();
+    }
+
     public void PlayGame()
     {
+        background.Stop();
+        Cursor.visible = false;
         SceneManager.LoadScene(1);
     }
 

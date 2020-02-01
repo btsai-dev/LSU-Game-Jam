@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //camLook = new Vector3(0, 12, 0);
-        camLook = new Vector3(0, 12, -4);
+        camLook = new Vector3(0, 10, -8);
         playerRigidBody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
     }
