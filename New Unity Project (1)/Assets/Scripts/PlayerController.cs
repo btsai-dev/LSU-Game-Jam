@@ -24,18 +24,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
-
-        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundContact = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
-
-        if (groundContact.Raycast(cameraRay, out rayLength))
+        if (Time.timeScale > 0)
         {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            moveVelocity = moveInput * moveSpeed;
 
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Plane groundContact = new Plane(Vector3.up, Vector3.zero);
+            float rayLength;
+
+            if (groundContact.Raycast(cameraRay, out rayLength))
+            {
+                Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+
+                transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            }
         }
     }
 
