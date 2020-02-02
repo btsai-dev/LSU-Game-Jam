@@ -7,9 +7,12 @@ public class MonsterController : MonoBehaviour
 {
     public Camera cam;
     public NavMeshAgent agent;
+    public AudioSource sound;
+    public int numberCap = 1000;
     GameObject player;
     GameObject hunter;
     GameObject chaser;
+    int rand;
 
     void Start()
     {
@@ -23,6 +26,11 @@ public class MonsterController : MonoBehaviour
     void FixedUpdate()
     {
         agent.destination = player.transform.position;
+        rand = Random.Range(0, numberCap);
+        if (rand == 1)
+        {
+            sound.Play();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

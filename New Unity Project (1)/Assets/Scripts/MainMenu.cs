@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private AudioSource background;
+
     void Start()
     {
         Time.timeScale = 1;
         background = GameObject.Find("Canvas").GetComponent<AudioSource>();
+
     }
 
     public void PlayGame()

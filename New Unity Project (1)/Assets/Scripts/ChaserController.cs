@@ -7,6 +7,7 @@ public class ChaserController : MonoBehaviour
 {
     public Camera cam;
     public NavMeshAgent agent;
+    public int numberCap = 1000;
 
     GameMaster gamemaster;
     GameObject player;
@@ -14,6 +15,7 @@ public class ChaserController : MonoBehaviour
     GameObject hunter;
     public MeshRenderer mesh;
     public Collider coll;
+    public AudioSource chaserSound;
 
     private bool active;
     private float spawnTime = 30f;
@@ -21,6 +23,7 @@ public class ChaserController : MonoBehaviour
     private float timeInLight = 0f;
     private float lightLimit = 0f;
     private Material chaserMaterial;
+    private int rand;
 
     private float sTime;
     private Vector3 spawnLocation;
@@ -35,6 +38,7 @@ public class ChaserController : MonoBehaviour
         gamemaster = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
         player = GameObject.FindGameObjectWithTag("Player");
         chaser = GameObject.FindGameObjectWithTag("Chaser");
+        //chaserSound = chaser.GetComponent<AudioSource>();
         hunter = GameObject.FindGameObjectWithTag("Hunter");
         spawnLocation = chaser.transform.position;
         holdingCell = GameObject.FindGameObjectWithTag("Prison").transform.position;
@@ -71,6 +75,11 @@ public class ChaserController : MonoBehaviour
             {
                 Debug.Log("Chasing!");
                 agent.destination = player.transform.position;
+                rand = Random.Range(0, numberCap);
+                if(rand == 1)
+                {
+                    chaserSound.Play();
+                }
             }
         }
     }
@@ -78,6 +87,7 @@ public class ChaserController : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "DangerLight" && active) {
+            chaserSound.Play();
             if (timeInLight < lightLimit)
             {
                 timeInLight += Time.deltaTime;

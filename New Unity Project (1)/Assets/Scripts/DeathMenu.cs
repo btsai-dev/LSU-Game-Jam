@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathMenu : MonoBehaviour
 {
     private AudioSource background;
+    //private GameObject mainMusic;
     void Start()
     {
         Time.timeScale = 1;

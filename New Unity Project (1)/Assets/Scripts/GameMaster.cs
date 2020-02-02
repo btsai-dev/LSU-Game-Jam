@@ -13,7 +13,8 @@ public class GameMaster : MonoBehaviour
     public int repaired;
     public bool started;
     public GameObject player;
-    public PlayerController script; 
+    public PlayerController script;
+    public AudioSource mainMusic;
             
     void Start()
     {
@@ -23,7 +24,9 @@ public class GameMaster : MonoBehaviour
         script = player.GetComponent<PlayerController>();
         generators = GameObject.FindGameObjectsWithTag("Generator").Length;
         repaired = 0;
+
         script.isAlive = true;
+        mainMusic.Play();
     }
 
 

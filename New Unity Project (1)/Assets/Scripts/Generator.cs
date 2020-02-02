@@ -35,7 +35,9 @@ public class Generator : MonoBehaviour
         source = this.transform.Find("GenLight").gameObject.GetComponent<Light>();
         source.range = 5;
         source.color = Color.red;
-        audios = new AudioSource[6];
+        audios = new AudioSource[8];
+        audios[7] = this.transform.Find("WrenchHitSound").gameObject.GetComponent<AudioSource>();
+        audios[6] = this.transform.Find("WrenchSound").gameObject.GetComponent<AudioSource>();
         audios[5] = this.transform.Find("Indicator 01").gameObject.GetComponent<AudioSource>();
         audios[4] = this.transform.Find("Indicator 02").gameObject.GetComponent<AudioSource>();
         audios[3] = this.transform.Find("Indicator 03").gameObject.GetComponent<AudioSource>();
@@ -102,17 +104,29 @@ public class Generator : MonoBehaviour
                                 audios[0].Play();
                                 lights[0].color = Color.green;
                                 break;
+                            case 5:
+                                audios[7].Play();
+                                break;
                             case 19:
                                 audios[1].Play();
                                 lights[1].color = Color.green;
+                                break;
+                            case 30:
+                                audios[6].Play();
                                 break;
                             case 39:
                                 audios[2].Play();
                                 lights[2].color = Color.green;
                                 break;
+                            case 53:
+                                audios[6].Play();
+                                break;
                             case 59:
                                 audios[3].Play();
                                 lights[3].color = Color.green;
+                                break;
+                            case 76:
+                                audios[6].Play();
                                 break;
                             case 79:
                                 audios[4].Play();
@@ -120,6 +134,7 @@ public class Generator : MonoBehaviour
                                 break;
                             case 99:
                                 audios[5].Play();
+                                audios[6].Play();
                                 lights[5].color = Color.green;
                                 break;
                         }
