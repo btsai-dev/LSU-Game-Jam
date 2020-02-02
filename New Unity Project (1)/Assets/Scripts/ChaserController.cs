@@ -15,7 +15,7 @@ public class ChaserController : MonoBehaviour
 
 
     private bool active;
-    private float spawnTime = 1f;
+    private float spawnTime = 30f;
     private float timer = 0f;
     private float timeInLight = 0f;
     private float lightLimit = 0f;
@@ -25,11 +25,12 @@ public class ChaserController : MonoBehaviour
     private float sTime;
     private Vector3 spawnLocation;
     private Vector3 holdingCell;
-
+    private bool loaded;
     private float fadeSpeed = 0.1f;
 
     void Start()
     {
+        loaded = false;
         sTime = Time.time;
         gamemaster = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -39,30 +40,41 @@ public class ChaserController : MonoBehaviour
         holdingCell = GameObject.FindGameObjectWithTag("Prison").transform.position;
         chaserMaterial = GetComponent<Renderer>().material;
         fading = false;
+        active = false;
     }
 
     void Update()
     {
-
+        
     }
 
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(gamemaster.repaired >= 0) {
+        if(gamemaster.repaired > 0) {
             if (!fading && !active)
             {
-                timer += Time.deltaTime;
-                if (timer > spawnTime)
+                if (!loaded)
                 {
-                    timer = 0f;
                     spawnIn();
-                    active = true;
+                    loaded = true;
                 }
+                else
+                {
+                    timer += Time.deltaTime;
+                    if (timer > spawnTime)
+                    {
+                        timer = 0f;
+                        spawnIn();
+                        active = true;
+                    }
+                }
+                
             }
             else if (active && !fading)
             {
+                Debug.Log("Chasing!");
                 agent.destination = player.transform.position;
             }
         }

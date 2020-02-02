@@ -5,13 +5,17 @@ using UnityEngine.Audio;
 
 public class Generator : MonoBehaviour
 {
+    public GameMaster gamemaster;
+
     public float timeBetweenLoad = 0.10f;
     public Material onMat;
     public Material offMat;
     public Light worldLight;
 
     private AudioSource hum;
+
     private Collider generatorCollider;
+
     private Renderer render;
     private Material mat;
     private bool running;
@@ -25,6 +29,7 @@ public class Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gamemaster = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMaster>();
         worldLight = this.transform.Find("WorldLight").gameObject.GetComponent<Light>();
         worldLight.range = 0;
         source = this.transform.Find("GenLight").gameObject.GetComponent<Light>();
@@ -52,8 +57,9 @@ public class Generator : MonoBehaviour
             light.intensity = 2;
         }
 
-        hum = GetComponent<AudioSource>();
-        render = GetComponent<Renderer>();
+        hum = gameObject.GetComponent<AudioSource>();
+
+        render = gameObject.GetComponent<Renderer>();
         mat = render.material;
         running = false;
         remaining = 100;
@@ -173,5 +179,6 @@ public class Generator : MonoBehaviour
         source.color = Color.green;
         hum.Play();
         running = true;
+        gamemaster.repaired++;
     }
 }

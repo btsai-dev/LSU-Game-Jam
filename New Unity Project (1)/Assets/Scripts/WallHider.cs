@@ -13,7 +13,7 @@ public class WallHider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transparent = Shader.Find("Transparent/Diffuse");
+        transparent = Shader.Find("Unlit/Transparent Colored");
         defalt = Shader.Find("Standard");
         hiddenObjects = new List<Transform>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
