@@ -286,11 +286,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11394}
     - Class: 114
+      Script: {instanceID: 11784}
+    - Class: 114
       Script: {instanceID: 11944}
     - Class: 114
       Script: {instanceID: 12174}
     - Class: 114
       Script: {instanceID: 12654}
+    - Class: 114
+      Script: {instanceID: 13006}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -346,7 +350,7 @@ ScriptsOnlyBuild:
     className: NavMeshLink
   - hash:
       serializedVersion: 2
-      Hash: 55b23c8e001d3ee384677bc692c5a5b1
+      Hash: e7594ae9551e0c19b200a8fbeab3f131
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameMaster
@@ -418,7 +422,7 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: b06b810a3ca005f62ceb9c648e580e94
+      Hash: 2602537b3b91974f6e47702c5bb94265
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChaserController
@@ -812,4 +816,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Main_Level.unity
   - Assets/Scenes/Death.unity
   - Assets/Scenes/Victory.unity
-  playerPath: C:/Users/godon/Desktop/__TMP/Project one/Project one.exe
+  playerPath: C:/Users/godon/Desktop/__TMP/BUILD/Project one.exe
