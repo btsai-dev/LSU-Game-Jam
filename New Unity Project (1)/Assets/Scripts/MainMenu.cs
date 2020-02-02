@@ -16,12 +16,19 @@ public class MainMenu : MonoBehaviour
     {
         background.Stop();
         // Cursor.visible = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false; 
+    }
+
+    IEnumerator SceneSwitch()
+    {
+        SceneManager.LoadScene("mainScene", LoadSceneMode.Additive);
+        yield return null;
+        SceneManager.UnloadSceneAsync("machine");
     }
 }

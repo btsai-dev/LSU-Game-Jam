@@ -26,7 +26,7 @@ public class PauseMenu : MonoBehaviour
     {
         //Cursor.visible = true;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void Quit()

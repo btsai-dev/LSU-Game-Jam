@@ -23,10 +23,10 @@ public class GameMaster : MonoBehaviour
     {
         if(repaired == generators)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(3, LoadSceneMode.Single);
         } else if (!script.isAlive)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
 
         

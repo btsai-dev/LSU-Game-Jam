@@ -16,13 +16,13 @@ public class DeathMenu : MonoBehaviour
     {
         background.Stop();
         // Cursor.visible = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void GotoMenu()
     {
         background.Stop();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void QuitGame()
