@@ -1203,8 +1203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generators: 0
   repaired: 0
-  player: {fileID: 0}
-  script: {fileID: 0}
+  started: 0
+  player: {fileID: 2029509772}
+  script: {fileID: 2029509777}
 --- !u!1 &743335760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: monstermesh
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f97a8dd65a73fc3428952eff1388c4be,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChaserMesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f97a8dd65a73fc3428952eff1388c4be, type: 3}
@@ -1540,7 +1546,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 43564dffc249c5242b5bc713c1a64864, type: 2}
+      objectReference: {fileID: 2100000, guid: 381d62d943cdfbb4f9e27dcceb2a6bc9, type: 2}
     - target: {fileID: -927199367670048503, guid: f97a8dd65a73fc3428952eff1388c4be,
         type: 3}
       propertyPath: m_Name
@@ -1855,7 +1861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998844055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 42.4, y: 0, z: 113.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 904497108}
@@ -2297,6 +2303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
   agent: {fileID: 1349278908}
+  mesh: {fileID: 1625802395}
+  coll: {fileID: 1349278909}
 --- !u!195 &1349278908
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2308,7 +2316,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 20
-  m_Acceleration: 4
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0
@@ -2388,7 +2396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349278906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.8, y: -0.99, z: 101.1}
+  m_LocalPosition: {x: 0, y: 0, z: -3.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 846897054}
@@ -3278,6 +3286,12 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!23 &1625802395 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: f97a8dd65a73fc3428952eff1388c4be,
+    type: 3}
+  m_PrefabInstance: {fileID: 846897053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1764563853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3289,7 +3303,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 43564dffc249c5242b5bc713c1a64864, type: 2}
+      objectReference: {fileID: 2100000, guid: f347c9eb656041548be2080940de2425, type: 2}
     - target: {fileID: -4216859302048453862, guid: 497573a084a40384f9f27d9823122505,
         type: 3}
       propertyPath: m_LocalPosition.x

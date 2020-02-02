@@ -12,14 +12,14 @@ public class ChaserController : MonoBehaviour
     GameObject player;
     GameObject chaser;
     GameObject hunter;
-
+    public MeshRenderer mesh;
+    public Collider coll;
 
     private bool active;
     private float spawnTime = 30f;
     private float timer = 0f;
     private float timeInLight = 0f;
     private float lightLimit = 0f;
-    private bool fading;
     private Material chaserMaterial;
 
     private float sTime;
@@ -39,40 +39,35 @@ public class ChaserController : MonoBehaviour
         spawnLocation = chaser.transform.position;
         holdingCell = GameObject.FindGameObjectWithTag("Prison").transform.position;
         chaserMaterial = GetComponent<Renderer>().material;
-        fading = false;
         active = false;
-    }
-
-    void Update()
-    {
-        
+        agent.isStopped = true;
+        timer = 0f;
     }
 
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
-        if(gamemaster.repaired > 0) {
-            if (!fading && !active)
+        if(gamemaster.repaired >= 0) {
+            if (!active)
             {
                 if (!loaded)
                 {
+                    Debug.Log("Loaded and spawning!");
                     spawnIn();
-                    loaded = true;
                 }
                 else
                 {
                     timer += Time.deltaTime;
                     if (timer > spawnTime)
                     {
-                        timer = 0f;
                         spawnIn();
-                        active = true;
+                        timer = 0f;
                     }
                 }
                 
             }
-            else if (active && !fading)
+            else if (active)
             {
                 Debug.Log("Chasing!");
                 agent.destination = player.transform.position;
@@ -82,7 +77,7 @@ public class ChaserController : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "DangerLight" && active && !fading) {
+        if (other.gameObject.tag == "DangerLight" && active) {
             if (timeInLight < lightLimit)
             {
                 timeInLight += Time.deltaTime;
@@ -103,31 +98,36 @@ public class ChaserController : MonoBehaviour
     {
         Debug.Log("Spawning in!");
         chaser.transform.position = spawnLocation;
+        active = true;
         agent.isStopped = false;
-        Color colora = chaser.GetComponent<Renderer>().material.color;
-        colora.a = 1f;
+        mesh.enabled = true;
+        coll.enabled = true;
+        loaded = true;
     }
 
     void terminate()
     {
+        Debug.Log("Terminating.");
         agent.isStopped = true;
+        coll.enabled = false;
+        mesh.enabled = false;
         active = false;
-        chaser.transform.position = holdingCell;
-
+        //chaser.transform.position = holdingCell;
+        chaser.transform.position = new Vector3(-10, 0, 13);
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (active && !fading && collision.gameObject.tag == "Player")
+        if (loaded && active && collision.gameObject.tag == "Player")
         {
             PlayerController controller = player.GetComponent<PlayerController>();
-            Debug.Log("KillingPlayer.");
-            controller.isAlive = false;
+            Debug.Log("Chaser is Killing Player.");
             if(hunter)
                 hunter.SetActive(false);
             if(chaser)
                 chaser.SetActive(false);
+            controller.isAlive = false;
         }
     }
 }

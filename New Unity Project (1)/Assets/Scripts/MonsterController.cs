@@ -1,43 +1,4 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.AI;
-
-//public class EnemigoController : MonoBehaviour
-//{
-
-//    public Camera cam;
-//    public Vector3 position;
-//    public NavMeshAgent agent;
-//    public NavMeshAgent agent2;
-//    public NavMeshPath navMeshPath;
-
-//    void Start()
-//    {
-//        position = GameObject.Find("Player").transform.position;
-
-//        if (agent.CalculatePath(position))
-//        {
-//            NavMeshPath path = new navMeshPath();
-//            agent.CalculatePath(position, path);
-//        }
-
-//    }
-//    // Update is called once per frame
-//    void FixedUpdate()
-//    {
-//        //position = GameObject.Find("Player").transform.position;
-
-//       // if (!agent.CalculatePath(position))
-//       // {   
-//            path = new navMeshPath();
-//            //agent2.CalculatePath(position, path);
-
-//       // }
-
-//    }
-//}
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -69,12 +30,13 @@ public class MonsterController : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             PlayerController controller = player.GetComponent<PlayerController>();
-            Debug.Log("KillingPlayer.");
-            controller.isAlive = false;
+            Debug.Log("Hunter is KillingPlayer.");
+            Debug.Log(hunter.transform.position);
             if(chaser)
                 chaser.SetActive(false);
             if(hunter)
                 hunter.SetActive(false);
+            controller.isAlive = false;
         }
     }
 }

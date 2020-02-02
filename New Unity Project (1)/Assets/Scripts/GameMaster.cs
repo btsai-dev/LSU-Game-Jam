@@ -3,39 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameMaster : MonoBehaviour
 {
+
+    GameObject hunter;
+    GameObject chaser;
     public int generators;
     public int repaired;
+    public bool started;
     public GameObject player;
     public PlayerController script; 
             
     void Start()
     {
+        hunter = GameObject.FindGameObjectWithTag("Hunter");
+        chaser = GameObject.FindGameObjectWithTag("Chaser");
         player = GameObject.FindGameObjectWithTag("Player");
         script = player.GetComponent<PlayerController>();
         generators = GameObject.FindGameObjectsWithTag("Generator").Length;
         repaired = 0;
+        script.isAlive = true;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void FixedUpdate()
     {
-        if(repaired == generators)
+        if (repaired == generators)
         {
             SceneManager.LoadScene(3, LoadSceneMode.Single);
-        } else if (!script.isAlive)
+        }
+        else if (!script.isAlive)
         {
             SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
-
-        
     }
 
     void cleanUp()
     {
-        GameObject hunter = GameObject.FindGameObjectWithTag("Hunter");
-        GameObject chaser = GameObject.FindGameObjectWithTag("Chaser");
         if (hunter)
             hunter.SetActive(false);
         if (chaser)
