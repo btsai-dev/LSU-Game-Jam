@@ -48,7 +48,7 @@ public class ChaserController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(gamemaster.repaired > 0) {
+        if(gamemaster.repaired >= 0) {
             if (!active)
             {
                 if (!loaded)
