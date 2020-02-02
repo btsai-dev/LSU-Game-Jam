@@ -13,8 +13,8 @@ public class WallHider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transparent = Shader.Find("Unlit/Transparent Colored");
-        defalt = Shader.Find("Standard");
+        //transparent = Shader.Find("Custom/Transparency");
+        //defalt = Shader.Find("Standard");
         hiddenObjects = new List<Transform>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -37,7 +37,8 @@ public class WallHider : MonoBehaviour
             {
                 hiddenObjects.Add(trans);
                 //trans.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-                trans.GetComponent<Renderer>().material.shader = transparent;
+                // trans.GetComponent<Renderer>().material.shader = transparent;
+                trans.gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
         }
 
@@ -57,8 +58,13 @@ public class WallHider : MonoBehaviour
             if (putBack)
             {
                 Transform obj = hiddenObjects[goneIndex];
-                obj.GetComponent<Renderer>().material.shader = defalt;
-                //obj.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1f);
+                //Material mater = obj.GetComponent<Renderer>().material;
+                // Color col = mater.color;
+                //mater.SetColorArray
+
+                //obj.GetComponent<MeshRenderer>().material.color = new Color(0f, 0f, 0f, 0f);
+
+                obj.gameObject.GetComponent<MeshRenderer>().enabled = true;
                 hiddenObjects.RemoveAt(goneIndex);
                 goneIndex--;
             }
