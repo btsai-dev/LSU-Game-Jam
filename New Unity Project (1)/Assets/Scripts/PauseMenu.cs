@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Menu()
     {
-        //Cursor.visible = true;
+        Cursor.visible = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        //Cursor.visible = false;
+        Cursor.visible = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gamePause = false;
@@ -45,7 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        //Cursor.visible = true;
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gamePause = true;

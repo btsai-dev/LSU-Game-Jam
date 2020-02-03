@@ -17,8 +17,14 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         background.Stop();
-        // Cursor.visible = false;
+        Cursor.visible = false;
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    public void Credits()
+    {
+        Cursor.visible = false;
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
     public void QuitGame()

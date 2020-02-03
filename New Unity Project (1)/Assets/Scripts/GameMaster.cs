@@ -32,12 +32,14 @@ public class GameMaster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (repaired == generators)
+        if (repaired >= generators)
         {
+            Cursor.visible = true;
             SceneManager.LoadScene(3, LoadSceneMode.Single);
         }
         else if (!script.isAlive)
         {
+            Cursor.visible = true;
             SceneManager.LoadScene(2, LoadSceneMode.Single);
         }
     }
