@@ -1,5 +1,7 @@
+# LSU Game Jam 2020
+
 ## About
-Astrolight is an independent paranormal game developed by Team Ajaqxz in 48 hours as a submission to the 2020 Global Game Jam competition. The competition's theme was "Repair" and this game implemented the theme through accomplishing objectives necessary to achieve victory conditions.
+Astrolight is an independent paranormal game developed by Team Ajaqxz in 48 hours as a submission to the 2020 LSU Global Game Jam competition (and subsequently won "Best Game Overall"). The competition's theme was "Repair" and this game implemented the theme through accomplishing objectives necessary to achieve victory conditions.
 
 The game features the "Player" as being stuck in a disabled starship following a loss of power. The "Player" must reach and interact with three generator entities to restore ships power, upon which the victory conditions are satisifed. In opposition to the "Player" are two alien entities. Both alien entities, upon physical contact with the "Player" results in an immediate loss.
 
