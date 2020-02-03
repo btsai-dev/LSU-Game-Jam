@@ -1,5 +1,11 @@
 # LSU Game Jam 2020
 
+## Downloads
+
+Installers are available in releases: https://github.com/godonan/LSU-Game-Jam/releases
+
+Installers are also available at the official Game Jam website: https://globalgamejam.org/2020/games/project-ajaqxz-4
+
 ## About
 Astrolight is an independent paranormal game developed by Team Ajaqxz in 48 hours as a submission to the 2020 LSU Global Game Jam competition (and subsequently won "Best Game Overall"). The competition's theme was "Repair" and this game implemented the theme through accomplishing objectives necessary to achieve victory conditions.
 
